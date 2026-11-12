@@ -2,27 +2,54 @@ document.getElementById('currentDate').innerText = new Date().toLocaleDateString
     weekday: 'short', month: 'short', day: 'numeric' 
 });
 
-const vocabData = [
-    { word: "Abundant", meaning: "প্রচুর বা পর্যাপ্ত", example: "Water is abundant here." },
-    { word: "Benevolent", meaning: "দয়ালু বা উপকারী", example: "He is a benevolent man." },
-    { word: "Candid", meaning: "স্পষ্টবাদী বা অকপট", example: "Give a candid opinion." },
-    { word: "Diligent", meaning: "পরিশ্রমী", example: "She is a diligent student." },
-    { word: "Eloquent", meaning: "বাকপটু", example: "An eloquent speech." },
-    { word: "Frugal", meaning: "মিতব্যয়ী", example: "Be frugal in spending." }
-];
+// Database for all modules with Pagination support
+const db = {
+    vocabulary: [
+        { title: "Abundant", desc: "প্রচুর বা পর্যাপ্ত (Meaning: Existing or available in large quantities)", ex: "Water is abundant here." },
+        { title: "Benevolent", desc: "দয়ালু বা উপকারী (Meaning: Well meaning and kindly)", ex: "He is a benevolent donor." },
+        { title: "Candid", desc: "স্পষ্টবাদী বা অকপট (Meaning: Truthful and straightforward)", ex: "Give your candid opinion." },
+        { title: "Diligent", desc: "পরিশ্রমী (Meaning: Having or showing care in work)", ex: "She is a diligent student." },
+        { title: "Eloquent", desc: "বাকপটু (Meaning: Fluent or persuasive in speaking)", ex: "An eloquent speech." },
+        { title: "Frugal", desc: "মিতব্যয়ী (Meaning: Sparing or economical with regard to money)", ex: "Be frugal in spending." }
+    ],
+    "bengali-vocab": [
+        { title: "অগাধ", desc: "যার গভীরতা মাপা যায় না বা প্রচুর। যেমন: অগাধ জল, অগাধ বিশ্বাস।" },
+        { title: "অনিচ্ছুক", desc: "কোনো কিছুতে যার ইচ্ছা বা সম্মতি নেই।" },
+        { title: "ঐতিহাসিক", desc: "ইতিহাসে স্থান পাওয়ার যোগ্য বা অতি গুরুত্বপূর্ণ ঘটনা।" },
+        { title: "প্রবাদ: উলুবনে মুক্ত ছিটানো", desc: "অমূল্য বস্তুর অপাত্রে দান বা অযোগ্য ব্যক্তির কাছে ভালো জিনিসের কদর না হওয়া।" },
+        { title: "প্রবাদ: চোরের দশ দিন গৃহস্থের এক দিন", desc: "পাপের ফল একদিন না একদিন হাতেনাতে ধরা পরেই।" },
+        { title: "প্রাবন্ধিক", যিনি প্রবন্ধ রচনা করেন।" }
+    ],
+    gk: [
+        { title: "বাংলাদেশের দীর্ঘতম নদী", desc: "মেঘনা নদী (প্রধান শাখা হিসেবে দীর্ঘতম)।" },
+        { title: "বাংলাদেশের জাতীয় ফুল", desc: "শাপলা (White Water Lily)।" },
+        { title: "সৌরজগতের সবচেয়ে বড় গ্রহ", desc: "বৃহস্পতি (Jupiter)।" },
+        { title: "কম্পিউটারের জনক কে?", desc: "চার্লস ব্যাবেজ (Charles Babbage)।" },
+        { title: "বাংলাদেশের সংবিধান কবে কার্যকর হয়?", desc: "১৬ ডিসেম্বর ১৯৭২ সালে।" },
+        { title: "গ্রিনল্যান্ডের রাজধানী", desc: "নুক (Nuuk)।" }
+    ],
+    math: [
+        { title: "শতকরা বের করার শর্টকাট", desc: "কোনো সংখ্যার X পার্সেন্ট বের করতে সংখ্যাটিকে X দিয়ে গুণ করে ১০০ দিয়ে ভাগ করতে হয়। যেমন: ৫০ এর ২০% = (৫০ × ২০) ÷ ১০০ = ১০।" },
+        { title: "১১ দিয়ে গুণ করার ট্রিক", desc: "যেকোনো দুই অঙ্কের সংখ্যাকে ১১ দিয়ে গুণ করতে হলে মাঝখানে সংখ্যা দুটির যোগফল বসাতে হয়। যেমন: ২৩ × ১১ = ২ (২+৩) ৩ = ২৫৩।" },
+        { title: "বর্গ করার সহজ নিয়ম", desc: "যে সংখ্যাগুলোর শেষে ৫ থাকে, তার বর্গ বের করতে শেষের ৫ এর জন্য ২৫ এবং সামনের সংখ্যাটিকে তার পরের সংখ্যা দিয়ে গুণ করে বসাতে হয়। যেমন: ২৫ এর স্কয়ার = (২×৩) ও ২৫ = ৬২৫।" }
+    ]
+};
 
-let currentVocabPage = 1;
-const itemsPerPage = 3;
+let currentModuleKey = '';
+let currentPage = 1;
+const itemsPerPage = 2; // প্রতি পেজে ২টি করে আইটেম দেখাবে, নিচে Next বাটন থাকবে
 
 function openModule(moduleName) {
+    currentModuleKey = moduleName;
+    currentPage = 1;
     const modal = document.getElementById('contentModal');
     const content = document.getElementById('modalContent');
     modal.classList.remove('hidden');
 
     saveToHistory(moduleName);
 
-    if (moduleName === 'vocabulary') {
-        renderVocabPage(currentVocabPage, content);
+    if (db[moduleName]) {
+        renderPaginatedContent(moduleName, currentPage, content);
     } 
     else if (moduleName === 'history') {
         renderHistory(content);
@@ -54,50 +81,53 @@ function openModule(moduleName) {
         content.innerHTML = `
             <div class="space-y-3">
                 <h2 class="text-lg font-bold capitalize text-indigo-700">${moduleName.replace('-', ' ')}</h2>
-                <p class="text-xs text-gray-600">এই মডিউলটি সফলভাবে লোড হয়েছে। এখানে প্রয়োজনীয় তথ্য যুক্ত করা যাবে।</p>
+                <p class="text-xs text-gray-600">এই মডিউলের কনটেন্ট খুব শীঘ্রই যুক্ত করা হবে।</p>
             </div>
         `;
     }
 }
 
-function renderVocabPage(page, containerElement) {
-    currentVocabPage = page;
+function renderPaginatedContent(key, page, containerElement) {
+    const dataList = db[key];
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedItems = vocabData.slice(start, end);
+    const paginatedItems = dataList.slice(start, end);
+
+    let titleName = key === 'vocabulary' ? 'English Vocabulary' : key === 'bengali-vocab' ? 'বাংলা শব্দভান্ডার' : key === 'gk' ? 'General Knowledge' : 'Math Tricks';
 
     let html = `
         <div class="space-y-4">
-            <h2 class="text-lg font-bold text-indigo-700"><i class="fa-solid fa-book mr-2"></i> English Vocabulary (Pagination)</h2>
-            <div class="space-y-2">
+            <h2 class="text-lg font-bold text-indigo-700"><i class="fa-solid fa-book-open mr-2"></i> ${titleName}</h2>
+            <div class="space-y-2.5">
     `;
 
     paginatedItems.forEach(item => {
         html += `
             <div class="p-3 bg-gray-50 border rounded-lg">
-                <h4 class="font-bold text-sm text-indigo-900">${item.word}</h4>
-                <p class="text-xs text-gray-700 mt-0.5">অর্থ: ${item.meaning}</p>
-                <p class="text-[11px] text-gray-500 italic mt-1">Example: ${item.example}</p>
+                <h4 class="font-bold text-sm text-indigo-950">${item.title}</h4>
+                <p class="text-xs text-gray-700 mt-1">${item.desc}</p>
+                ${item.ex ? `<p class="text-[11px] text-indigo-600 italic mt-1">উদাহরণ: ${item.ex}</p>` : ''}
             </div>
         `;
     });
 
     html += `</div>
-            <div class="flex justify-between items-center pt-2">
-                <button onclick="changeVocabPage(-1)" class="px-3 py-1 bg-gray-200 rounded text-xs font-medium ${page === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-300'}">পূর্ববর্তী (Prev)</button>
-                <span class="text-xs text-gray-600">পেজ ${page}</span>
-                <button onclick="changeVocabPage(1)" class="px-3 py-1 bg-indigo-600 text-white rounded text-xs font-medium ${end >= vocabData.length ? 'opacity-50 cursor-not-allowed' : 'hover:bg-indigo-700'}">পরবর্তী (Next)</button>
+            <div class="flex justify-between items-center pt-3 border-t">
+                <button onclick="changePage(-1)" class="px-3 py-1 bg-gray-200 rounded text-xs font-medium ${page === 1 ? 'opacity-40 cursor-not-allowed' : 'hover:bg-gray-300'}">পূর্ববর্তী (Prev)</button>
+                <span class="text-xs text-gray-600 font-medium">পেজ ${page} / ${Math.ceil(dataList.length / itemsPerPage)}</span>
+                <button onclick="changePage(1)" class="px-3 py-1 bg-indigo-600 text-white rounded text-xs font-medium ${end >= dataList.length ? 'opacity-40 cursor-not-allowed' : 'hover:bg-indigo-700'}">পরবর্তী (Next)</button>
             </div>
         </div>
     `;
     containerElement.innerHTML = html;
 }
 
-function changeVocabPage(direction) {
-    const totalPages = Math.ceil(vocabData.length / itemsPerPage);
-    if (currentVocabPage + direction >= 1 && currentVocabPage + direction <= totalPages) {
-        currentVocabPage += direction;
-        openModule('vocabulary');
+function changePage(direction) {
+    const dataList = db[currentModuleKey];
+    const totalPages = Math.ceil(dataList.length / itemsPerPage);
+    if (currentPage + direction >= 1 && currentPage + direction <= totalPages) {
+        currentPage += direction;
+        renderPaginatedContent(currentModuleKey, currentPage, document.getElementById('modalContent'));
     }
 }
 
