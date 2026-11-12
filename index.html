@@ -3,176 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Needs - Smart Learning & Productivity Hub</title>
-    <!-- Tailwind CSS for modern responsive styling -->
+    <title>Daily Needs - Smart Learning Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
 
-    <!-- Top Header -->
-    <header class="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-graduation-cap text-2xl"></i>
-                <h1 class="text-xl font-bold tracking-wide">Daily Needs</h1>
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <h1 class="text-lg font-semibold tracking-wide">Daily Needs</h1>
             </div>
-            <div class="flex items-center space-x-3">
-                <button id="installBtn" class="hidden bg-white text-blue-600 px-3 py-1 rounded-full text-sm font-semibold shadow hover:bg-blue-50 transition">
-                    <i class="fa-solid fa-download mr-1"></i> Install App
-                </button>
-                <span id="currentDate" class="text-sm bg-blue-700 px-3 py-1 rounded-full"></span>
+            <div class="flex items-center space-x-2">
+                <span id="currentDate" class="text-xs bg-indigo-800 px-2.5 py-1 rounded-md"></span>
             </div>
         </div>
     </header>
 
     <!-- Main Container -->
-    <main class="container mx-auto px-4 py-6 max-w-7xl">
+    <main class="container mx-auto px-3 py-4 max-w-6xl">
         
-        <!-- Dashboard Welcome Banner -->
-        <section class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold mb-2">স্বাগতম, আপনার প্রতিদিনের স্মার্ট হাব-এ!</h2>
-            <p class="text-blue-100 text-sm md:text-base">প পড়াশোনা, এআই আপডেট, টেকনোলজি এবং প্রডাক্টিভিটি ট্র্যাক করুন এক জায়গায়।</p>
-        </section>
+        <!-- Search Bar -->
+        <div class="mb-5">
+            <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                    <i class="fa-solid fa-search"></i>
+                </span>
+                <input type="text" id="searchInput" placeholder="যেকোনো ফিচার খুঁজুন..." class="w-full pl-10 pr-4 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 shadow-sm">
+            </div>
+        </div>
 
-        <!-- Feature Categories Grid -->
-        <h3 class="text-xl font-bold text-gray-700 mb-4 border-l-4 border-blue-600 pl-3">সকল ফিচার ও মডিউলসমূহ</h3>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-10">
+        <!-- Professional Compact Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 mb-8" id="featureGrid">
             
-            <!-- 1. English Vocabulary -->
-            <div onclick="openModule('vocabulary')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-blue-500">
-                <div class="text-blue-500 text-2xl mb-3"><i class="fa-solid fa-book-open"></i></div>
-                <h4 class="font-bold text-lg mb-1">English Vocabulary</h4>
-                <p class="text-sm text-gray-500">ইংরেজি শব্দের বাংলা অর্থ ও উচ্চারণ শিখুন। (Offline)</p>
+            <div onclick="openModule('vocabulary')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-indigo-600 text-lg mb-1.5"><i class="fa-solid fa-book"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">English Vocab</h4>
             </div>
 
-            <!-- 2. Bengali Vocabulary -->
-            <div onclick="openModule('bengali-vocab')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-green-500">
-                <div class="text-green-500 text-2xl mb-3"><i class="fa-solid fa-language"></i></div>
-                <h4 class="font-bold text-lg mb-1">বাংলা শব্দভান্ডার</h4>
-                <p class="text-sm text-gray-500">কঠিন বাংলা শব্দ ও প্রবাদ-প্রবচন। (Offline)</p>
+            <div onclick="openModule('bengali-vocab')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-emerald-600 text-lg mb-1.5"><i class="fa-solid fa-language"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">বাংলা শব্দভান্ডার</h4>
             </div>
 
-            <!-- 3. General Knowledge -->
-            <div onclick="openModule('gk')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-yellow-500">
-                <div class="text-yellow-500 text-2xl mb-3"><i class="fa-solid fa-globe"></i></div>
-                <h4 class="font-bold text-lg mb-1">General Knowledge</h4>
-                <p class="text-sm text-gray-500">বাংলাদেশ, বিশ্ব ও বিজ্ঞানভিত্তিক সাধারণ জ্ঞান।</p>
+            <div onclick="openModule('gk')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-amber-600 text-lg mb-1.5"><i class="fa-solid fa-globe"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">General Knowledge</h4>
             </div>
 
-            <!-- 4. Mathematical Tricks -->
-            <div onclick="openModule('math')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-red-500">
-                <div class="text-red-500 text-2xl mb-3"><i class="fa-solid fa-calculator"></i></div>
-                <h4 class="font-bold text-lg mb-1">Mathematical Tricks</h4>
-                <p class="text-sm text-gray-500">সহজে অঙ্ক সমাধানের শর্টকাট কৌশল।</p>
+            <div onclick="openModule('math')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-rose-600 text-lg mb-1.5"><i class="fa-solid fa-calculator"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">Math Tricks</h4>
             </div>
 
-            <!-- 5. Daily Learning System -->
-            <div onclick="openModule('daily-learning')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-purple-500">
-                <div class="text-purple-500 text-2xl mb-3"><i class="fa-solid fa-calendar-check"></i></div>
-                <h4 class="font-bold text-lg mb-1">Daily Learning</h4>
-                <p class="text-sm text-gray-500">দৈনিক পড়ার রুটিন ও প্রোগ্রেস ট্র্যাক।</p>
+            <div onclick="openModule('daily-learning')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-purple-600 text-lg mb-1.5"><i class="fa-solid fa-calendar-check"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">Daily Learning</h4>
             </div>
 
-            <!-- 6. Notification System -->
-            <div onclick="openModule('notifications')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-indigo-500">
-                <div class="text-indigo-500 text-2xl mb-3"><i class="fa-solid fa-bell"></i></div>
-                <h4 class="font-bold text-lg mb-1">Notification System</h4>
-                <p class="text-sm text-gray-500">পড়ার সময় মনে করিয়ে দেওয়ার রিমাইন্ডার।</p>
+            <div onclick="openModule('history')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-blue-600 text-lg mb-1.5"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">Learning History</h4>
             </div>
 
-            <!-- 7. English Speaking & Grammar -->
-            <div onclick="openModule('speaking')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-pink-500">
-                <div class="text-pink-500 text-2xl mb-3"><i class="fa-solid fa-comments"></i></div>
-                <h4 class="font-bold text-lg mb-1">English Speaking & Grammar</h4>
-                <p class="text-sm text-gray-500">কথোপকথন ও গ্রামার প্র্যাকটিস গাইড।</p>
+            <div onclick="openModule('speaking')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-pink-600 text-lg mb-1.5"><i class="fa-solid fa-comments"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">English Speaking</h4>
             </div>
 
-            <!-- 8. Mechanical & Technical -->
-            <div onclick="openModule('mechanical')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-gray-700">
-                <div class="text-gray-700 text-2xl mb-3"><i class="fa-solid fa-cogs"></i></div>
-                <h4 class="font-bold text-lg mb-1">Mechanical & Tech</h4>
-                <p class="text-sm text-gray-500">যান্ত্রিক ও টেকনিক্যাল বিষয়ের বেসিক শিক্ষা।</p>
+            <div onclick="openModule('mechanical')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-gray-600 text-lg mb-1.5"><i class="fa-solid fa-cogs"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">Mechanical & Tech</h4>
             </div>
 
-            <!-- 9. AI Writing Assistant -->
-            <div onclick="openModule('ai-writing')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-blue-600">
-                <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-pen-nib"></i></div>
-                <h4 class="font-bold text-lg mb-1">AI Writing Assistant</h4>
-                <p class="text-sm text-gray-500">বাংলা থেকে প্রফেশনাল ইংরেজিতে রূপান্তর। (Online/AI)</p>
+            <div onclick="openModule('ai-writing')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-cyan-600 text-lg mb-1.5"><i class="fa-solid fa-pen-nib"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">AI Writing</h4>
             </div>
 
-            <!-- 10. Smart Calculator & Unit Converter -->
-            <div onclick="openModule('smart-calc')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-teal-500">
-                <div class="text-teal-500 text-2xl mb-3"><i class="fa-solid fa-scale-balanced"></i></div>
-                <h4 class="font-bold text-lg mb-1">Smart Calculator</h4>
-                <p class="text-sm text-gray-500">হিসাব-নিকাশ ও বিভিন্ন একক রূপান্তর।</p>
+            <div onclick="openModule('planner')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-orange-600 text-lg mb-1.5"><i class="fa-solid fa-list-check"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">To-do Planner</h4>
             </div>
 
-            <!-- 11. Personal Planner & To-do List -->
-            <div onclick="openModule('planner')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-orange-500">
-                <div class="text-orange-500 text-2xl mb-3"><i class="fa-solid fa-list-check"></i></div>
-                <h4 class="font-bold text-lg mb-1">Personal Planner</h4>
-                <p class="text-sm text-gray-500">ব্যক্তিগত কাজের তালিকা ও রুটিন।</p>
+            <div onclick="openModule('tech-news')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-gray-200 flex flex-col items-center text-center">
+                <div class="text-red-500 text-lg mb-1.5"><i class="fa-solid fa-newspaper"></i></div>
+                <h4 class="font-medium text-xs text-gray-700">Tech News</h4>
             </div>
 
-            <!-- 12. Smart Revision & Progress -->
-            <div onclick="openModule('revision')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-cyan-500">
-                <div class="text-cyan-500 text-2xl mb-3"><i class="fa-solid fa-rotate"></i></div>
-                <h4 class="font-bold text-lg mb-1">Smart Revision</h4>
-                <p class="text-sm text-gray-500">পড়ার বিষয় রিভিশন ও ট্র্যাকিং।</p>
-            </div>
-
-            <!-- 13. Offline Learning & Data Sync -->
-            <div onclick="openModule('offline-sync')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-emerald-500">
-                <div class="text-emerald-500 text-2xl mb-3"><i class="fa-solid fa-cloud-arrow-down"></i></div>
-                <h4 class="font-bold text-lg mb-1">Offline Learning</h4>
-                <p class="text-sm text-gray-500">ইন্টারনেট ছাড়াও পড়ার কনটেন্ট পড়ার সুবিধা।</p>
-            </div>
-
-            <!-- 14. AI Knowledge Assistant -->
-            <div onclick="openModule('ai-assistant')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-indigo-600">
-                <div class="text-indigo-600 text-2xl mb-3"><i class="fa-solid fa-robot"></i></div>
-                <h4 class="font-bold text-lg mb-1">AI Knowledge Assistant</h4>
-                <p class="text-sm text-gray-500">যেকোনো পড়াশোনার বিষয়ে এআই চ্যাট। (Online)</p>
-            </div>
-
-            <!-- 15. Daily News & Tech Updates -->
-            <div onclick="openModule('tech-news')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-rose-500">
-                <div class="text-rose-500 text-2xl mb-3"><i class="fa-solid fa-newspaper"></i></div>
-                <h4 class="font-bold text-lg mb-1">Daily Tech News</h4>
-                <p class="text-sm text-gray-500">দৈনিক প্রযুক্তি ও সাধারণ খবরের আপডেট। (Online)</p>
-            </div>
-
-            <!-- 16. NEW MODULE: AI Daily Intelligence -->
-            <div onclick="openModule('ai-intelligence')" class="bg-white p-5 rounded-xl shadow hover:shadow-md transition cursor-pointer border-t-4 border-purple-700 bg-purple-50">
-                <div class="text-purple-700 text-2xl mb-3"><i class="fa-solid fa-brain"></i></div>
-                <h4 class="font-bold text-lg mb-1 text-purple-900">AI Daily Intelligence</h4>
-                <p class="text-sm text-purple-600">AI Highlights & Leaderboard (নতুন মডিউল)</p>
+            <div onclick="openModule('ai-intelligence')" class="bg-white p-3.5 rounded-lg shadow-sm hover:shadow transition cursor-pointer border border-indigo-200 bg-indigo-50 flex flex-col items-center text-center">
+                <div class="text-indigo-700 text-lg mb-1.5"><i class="fa-solid fa-brain"></i></div>
+                <h4 class="font-medium text-xs text-indigo-900">AI Intelligence</h4>
             </div>
 
         </div>
 
-        <!-- Dynamic Content Display Modal / Section -->
-        <div id="contentModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div class="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 shadow-2xl relative">
-                <button onclick="closeModule()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
-                <div id="modalContent">
-                    <!-- Dynamic content loads here -->
-                </div>
+        <!-- Modal -->
+        <div id="contentModal" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-3 z-50">
+            <div class="bg-white rounded-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto p-5 shadow-xl relative">
+                <button onclick="closeModule()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-xl font-bold">&times;</button>
+                <div id="modalContent"></div>
             </div>
         </div>
 
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
-        <p class="text-sm">Daily Needs App &copy; 2026 | Powered by AI & PWA Technology</p>
-    </footer>
 
     <script src="app.js"></script>
 </body>
