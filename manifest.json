@@ -1,20 +1,16 @@
 {
-  "ai_leaderboard": [
+  "name": "Daily Needs - Smart Learning Hub",
+  "short_name": "Daily Needs",
+  "start_url": "/AI-Learning/",
+  "scope": "/AI-Learning/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "icons": [
     {
-      "category": "Coding & Development",
-      "top_tool": "Claude 3.5 Sonnet",
-      "best_use_case": "Full-stack web development, debugging, and complex logic writing.",
-      "pricing": "Free / $20 per month",
-      "availability": "Available in Bangladesh via VPN/Direct",
-      "last_verified": "2026-11-13"
-    },
-    {
-      "category": "General Reasoning & Research",
-      "top_tool": "Gemini 1.5 Pro / Ultra",
-      "best_use_case": "Long context analysis, web-integrated research, and multilingual translation.",
-      "pricing": "Free / Paid API",
-      "availability": "Directly available in Bangladesh",
-      "last_verified": "2026-11-13"
+      "src": "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/book.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
     }
   ]
 }
