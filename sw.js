@@ -1,36 +1,16 @@
-
-const CACHE_NAME = 'daily-needs-v2';
-
-const urlsToCache = [
-  './',
-  './index.html',
-  './style.css',
-  './app.js',
-  './manifest.json'
-];
-
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(response =>
-      response || fetch(event.request)
-    )
-  );
-});
+{
+  "topics": [
+    {
+      "title": "Bearing Maintenance & Troubleshooting",
+      "what_why": "Bearings reduce friction between rotating shafts and machine housings.",
+      "working_principle": "Uses balls or rollers to separate moving parts and support radial/axial loads.",
+      "common_problems": "Overheating, abnormal noise, vibration, and premature wear.",
+      "troubleshooting": [
+        "Check lubrication level and grease quality.",
+        "Inspect alignment between motor and driven equipment.",
+        "Replace damaged seals to prevent dust ingress."
+      ],
+      "safety_precautions": "Always lockout/tagout (LOTO) electrical power before servicing rotating machinery."
+    }
+  ]
+}
