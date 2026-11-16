@@ -1,0 +1,96 @@
+[
+  {
+    "id": 1,
+    "category": "Daily Conversation",
+    "title": "নিজের পরিচয় দেওয়া",
+    "goal": "নিজের নাম, কাজ ও পরিচয় সহজ ইংরেজিতে বলা।",
+    "explanation": "নিজের পরিচয় দিতে I am..., My name is..., I work as... ব্যবহার করুন।",
+    "examples": [
+      "My name is Rahim.",
+      "I work as a technician.",
+      "I live in Bangladesh."
+    ],
+    "practice": "ইংরেজিতে নিজের নাম, পেশা ও কোথায় থাকেন—এই তিনটি বাক্য বলুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 2,
+    "category": "Daily Conversation",
+    "title": "শুভেচ্ছা ও কুশল বিনিময়",
+    "goal": "দৈনন্দিন কথোপকথন শুরু করতে পারা।",
+    "explanation": "পরিস্থিতি অনুযায়ী Hello, Good morning, How are you? ব্যবহার করুন।",
+    "examples": [
+      "Good morning. How are you?",
+      "I'm fine, thank you.",
+      "Nice to meet you."
+    ],
+    "practice": "একজন সহকর্মীর সঙ্গে শুভেচ্ছা বিনিময়ের ৪ লাইনের কথোপকথন তৈরি করুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 3,
+    "category": "Daily Conversation",
+    "title": "নিজের দৈনন্দিন কাজ বলা",
+    "goal": "প্রতিদিনের রুটিন Present Simple-এ বর্ণনা করা।",
+    "explanation": "নিয়মিত কাজ বোঝাতে I/You/We/They-এর সঙ্গে verb-এর base form ব্যবহার করুন। He/She-এর ক্ষেত্রে সাধারণত verb-এর শেষে s বা es যোগ হয়।",
+    "examples": [
+      "I wake up early.",
+      "I go to work at 8 a.m.",
+      "She starts work at 9 a.m."
+    ],
+    "practice": "সকালে ঘুম থেকে ওঠা থেকে কাজে যাওয়া পর্যন্ত ৫টি বাক্য বলুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 4,
+    "category": "Grammar",
+    "title": "Am, Is, Are-এর ব্যবহার",
+    "goal": "Subject অনুযায়ী সঠিক be verb ব্যবহার করা।",
+    "explanation": "I-এর সঙ্গে am, he/she/it ও একবচনের সঙ্গে is, এবং you/we/they ও বহুবচনের সঙ্গে are ব্যবহার হয়।",
+    "examples": [
+      "I am ready.",
+      "The machine is running.",
+      "The workers are busy."
+    ],
+    "practice": "Am, is, are ব্যবহার করে ৫টি বাক্য লিখুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 5,
+    "category": "Grammar",
+    "title": "Was ও Were-এর ব্যবহার",
+    "goal": "অতীতের অবস্থা বা পরিচয় বলা।",
+    "explanation": "I/he/she/it-এর সঙ্গে was এবং you/we/they-এর সঙ্গে were ব্যবহার হয়।",
+    "examples": [
+      "I was at work yesterday.",
+      "The machine was hot.",
+      "They were absent."
+    ],
+    "practice": "গতকাল কোথায় ছিলেন এবং কী অবস্থা ছিল—এমন ৩টি বাক্য লিখুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 6,
+    "category": "Grammar",
+    "title": "Present Simple Tense",
+    "goal": "অভ্যাস, রুটিন ও সাধারণ সত্য প্রকাশ করা।",
+    "explanation": "অভ্যাস বা নিয়মিত কাজের জন্য Present Simple ব্যবহার হয়। He/She/It-এর ক্ষেত্রে সাধারণত verb-এ s/es যোগ হয়।",
+    "examples": [
+      "I check the machine every day.",
+      "He checks the oil level.",
+      "Water boils at 100°C at normal atmospheric pressure."
+    ],
+    "practice": "আপনার কাজের রুটিন নিয়ে ৫টি বাক্য লিখুন।",
+    "difficulty": "সহজ"
+  },
+  {
+    "id": 7,
+    "category": "Grammar",
+    "title": "Present Continuous Tense",
+    "goal": "এখন কোনো কাজ চলছে বোঝানো।",
+    "explanation": "Subject + am/is/are + verb-ing দিয়ে বর্তমানে চলমান কাজ বোঝায়।",
+    "examples": [
+      "I am working now.",
+      "The motor is running.",
+      "They are repairing the pump."
+    ],
